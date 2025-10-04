@@ -83,8 +83,9 @@ void main_thread() {
 
 result<void> initialize_vision() {
     try {
-        // Initialize logger
-        logger::initialize(xorstr("vision_internal"), logger::log_level::debug, config::enable_file_logging);
+        // Initialize logger with secure string
+        auto logger_name = xorstr_secure("vision_internal");
+        logger::initialize(logger_name.get(), logger::log_level::debug, config::enable_file_logging);
         
         g_initialized = true;
         return result<void>::ok();
@@ -119,25 +120,29 @@ result<void> load_addresses() {
             logger::log_warning("send_packet pattern not found: {}", pattern_result.message());
         }
         
-        // Example: Find a string
-        auto string_result = main_module.find_string(xorstr("Send Battle"));
-        if (string_result) {
-            logger::log_info("Found 'Send Battle' string at: 0x{:X}", string_result->raw());
-            
-            // Example: Read the string to verify
-            auto str_ptr = string_result->as<const char*>();
-            logger::log_debug("String content: '{}'", str_ptr);
-        } else {
-            logger::log_warning("'Send Battle' string not found: {}", string_result.message());
-        }
+        // Example: Find a string using secure XOR
+        xorstr_call("Send Battle", [&](const char* search_str) {
+            auto string_result = main_module.find_string(search_str);
+            if (string_result) {
+                logger::log_info("Found '{}' string at: 0x{:X}", search_str, string_result->raw());
+                
+                // Example: Read the string to verify
+                auto str_ptr = string_result->as<const char*>();
+                logger::log_debug("String content: '{}'", str_ptr);
+            } else {
+                logger::log_warning("'{}' string not found: {}", search_str, string_result.message());
+            }
+        });
         
-        // Example: Get an export (from a system DLL)
+        // Example: Get an export (from a system DLL) using secure XOR
         c_memory ntdll("ntdll.dll");
         if (ntdll.is_valid()) {
-            auto export_result = ntdll.get_export(xorstr("NtQueryInformationProcess"));
-            if (export_result) {
-                logger::log_info("Found NtQueryInformationProcess at: 0x{:X}", export_result->raw());
-            }
+            xorstr_call("NtQueryInformationProcess", [&](const char* export_name) {
+                auto export_result = ntdll.get_export(export_name);
+                if (export_result) {
+                    logger::log_info("Found {} at: 0x{:X}", export_name, export_result->raw());
+                }
+            });
         }
         
         return result<void>::ok();

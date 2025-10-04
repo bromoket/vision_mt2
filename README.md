@@ -96,22 +96,37 @@ cmake --build . --config Release
 
 ## 🔧 Git Setup
 
-To set up Git with automatic authentication (no login prompts):
+### Option 1: Complete GitHub Setup (Recommended)
+Creates repository on GitHub and sets up everything:
 
 ```powershell
-# Run the Git setup script
-.\setup-git.ps1
+# Install Git Credential Manager and create GitHub repo
+.\setup-github.ps1
 
-# Or with parameters
+# Create private repository
+.\setup-github.ps1 -Private
+
+# Custom repository name
+.\setup-github.ps1 -RepoName "my-vision-fork"
+```
+
+### Option 2: Manual Git Setup
+For local setup or other Git providers:
+
+```powershell
+# Install Git Credential Manager only
+.\install-gcm.ps1
+
+# Then configure Git
 .\setup-git.ps1 -UserName "YourName" -UserEmail "your.email@example.com"
 ```
 
-This script will:
-- Configure your Git username and email
-- Set up Git Credential Manager for automatic authentication
-- Optionally generate SSH keys for GitHub/GitLab
-- Configure useful Git settings
-- Initialize the repository if needed
+**Features provided:**
+- ✅ **Git Credential Manager** - Secure token storage, no more passwords!
+- ✅ **GitHub CLI** - Create repositories from command line
+- ✅ **SSH Key Generation** - For maximum security
+- ✅ **Automatic Authentication** - One-time setup, permanent convenience
+- ✅ **Repository Creation** - Creates and pushes to GitHub automatically
 
 ## 📁 Project Structure
 
@@ -122,7 +137,10 @@ vision/
 ├── build.bat                   # Windows batch build script
 ├── build.ps1                   # PowerShell build script
 ├── setup-git.ps1               # Git configuration script
+├── setup-github.ps1             # Complete GitHub setup script
+├── install-gcm.ps1             # Git Credential Manager installer
 ├── config.example.json         # Sample configuration file
+├── xorstr_examples.cpp         # XOR string usage examples
 ├── .gitignore                  # Git ignore rules
 ├── .clang-format              # Code formatting rules
 ├── .clangd                    # LSP configuration
@@ -203,10 +221,32 @@ logger::log_error("Error occurred: {}", error_msg);
 
 ## 🔒 Security Features
 
-- **XOR String Obfuscation**: `xorstr("sensitive_string")`
+### **Advanced XOR String Obfuscation**
+- **Compile-time Encryption**: Strings encrypted during compilation
+- **Runtime Decryption**: Only decrypted when actually used
+- **Unique Keys**: Each usage gets different encryption key
+- **Memory Protection**: Automatic cleanup prevents memory dumps
+- **Stack-based Decryption**: Most secure option avoids heap allocation
+
+```cpp
+// Basic usage (encrypted at compile-time, decrypted at runtime)
+std::string basic = xorstr("sensitive data");
+
+// Secure usage (automatic memory cleanup)
+auto secure = xorstr_secure("API key");
+
+// Stack-based usage (most secure - never touches heap)
+xorstr_call("password123", [](const char* pwd) {
+    authenticate(pwd);  // Use immediately
+    // Memory automatically cleared after lambda
+});
+```
+
+### **Additional Security**
 - **Compile-time Hashing**: `fnv::hash("function_name")`
 - **Debug Privilege Elevation**: Automatic when needed
 - **Safe Memory Access**: Result-based error handling
+- **Anti-Analysis**: Resistant to static analysis and memory dumps
 
 ## 🎨 Code Style
 

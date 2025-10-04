@@ -123,8 +123,9 @@ result<void> initialize_console() {
 
 result<void> initialize_vision() {
     try {
-        // Initialize logger
-        logger::initialize(xorstr("vision_external"), logger::log_level::debug, config::enable_file_logging);
+        // Initialize logger with secure string
+        auto logger_name = xorstr_secure("vision_external");
+        logger::initialize(logger_name.get(), logger::log_level::debug, config::enable_file_logging);
         
         return result<void>::ok();
     } catch (const std::exception& e) {
