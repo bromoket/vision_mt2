@@ -1,0 +1,38 @@
+CompileFlags:
+  Add:
+    - -std=c++20
+    - -m32
+    - -Wall
+    - -Wextra
+    - -Wpedantic
+    - -fms-extensions
+    - -fms-compatibility
+    - -DWIN32_LEAN_AND_MEAN
+    - -DNOMINMAX
+  Remove:
+    - -W*
+    - -std=*
+
+Index:
+  Background: Build
+
+Diagnostics:
+  ClangTidy:
+    Add:
+      - modernize-*
+      - performance-*
+      - readability-*
+      - bugprone-*
+    Remove:
+      - modernize-use-trailing-return-type
+      - readability-braces-around-statements
+      - readability-magic-numbers
+  UnusedIncludes: Strict
+
+InlayHints:
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+
+Hover:
+  ShowAKA: true

@@ -1,0 +1,27 @@
+{
+  "name": "vision",
+  "version": "1.0.0",
+  "description": "Game helper tool for Metin2",
+  "dependencies": [
+    {
+      "name": "fmt",
+      "version>=": "10.1.1"
+    },
+    {
+      "name": "nlohmann-json",
+      "version>=": "3.11.2"
+    },
+    {
+      "name": "zydis",
+      "version>=": "4.1.0"
+    }
+  ],
+  "builtin-baseline": "3426db05b996481ca31e95fff3734cf23e0f51bc",
+  "vcpkg-configuration": {
+    "default-registry": {
+      "kind": "git",
+      "repository": "https://github.com/Microsoft/vcpkg",
+      "baseline": "3426db05b996481ca31e95fff3734cf23e0f51bc"
+    }
+  }
+}

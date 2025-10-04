@@ -1,0 +1,23 @@
+# This file keeps the imgui directory in git
+# Copy your ImGui source files here:
+#
+# Required files:
+# - imgui.cpp
+# - imgui.h
+# - imgui_demo.cpp
+# - imgui_draw.cpp
+# - imgui_tables.cpp
+# - imgui_widgets.cpp
+# - imconfig.h
+# - imgui_internal.h
+# - imstb_rectpack.h
+# - imstb_textedit.h
+# - imstb_truetype.h
+#
+# Required backends:
+# - backends/imgui_impl_win32.cpp
+# - backends/imgui_impl_win32.h
+# - backends/imgui_impl_dx11.cpp
+# - backends/imgui_impl_dx11.h
+#
+# Download from: https://github.com/ocornut/imgui

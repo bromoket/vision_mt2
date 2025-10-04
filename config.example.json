@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "logging": {
+    "level": "info",
+    "console": true,
+    "file": true,
+    "directory": "logs"
+  },
+  "process": {
+    "target_name": "metin2client.exe",
+    "window_class": "METIN2_GAME",
+    "injection_method": "manual_map"
+  },
+  "memory": {
+    "pattern_cache": true,
+    "address_validation": true,
+    "scan_alignment": 1,
+    "max_scan_size": 268435456
+  },
+  "features": {
+    "debug_console": false,
+    "imgui_demo": false,
+    "auto_inject": true,
+    "reconnect_on_disconnect": true
+  },
+  "ui": {
+    "theme": "dark",
+    "window_width": 1280,
+    "window_height": 800,
+    "always_on_top": false
+  },
+  "patterns": {
+    "send_packet": "E8 ?? ?? ?? ?? 83 C4 08 5F",
+    "get_player_pos": "55 8B EC 83 EC ?? 56 8B F1",
+    "attack_function": "55 8B EC 51 53 56 8B F1"
+  },
+  "offsets": {
+    "player_base": "0x00000000",
+    "inventory_base": "0x00000000",
+    "mob_list_base": "0x00000000"
+  }
+}

@@ -1,0 +1,85 @@
+# Build directories
+build/
+out/
+cmake-build-*/
+
+# Visual Studio
+.vs/
+*.vcxproj.user
+*.sln.docstates
+*.suo
+*.user
+*.userosscache
+*.sln.docstates.json
+
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Compiled binaries
+*.exe
+*.dll
+*.lib
+*.obj
+*.pdb
+*.ilk
+*.exp
+
+# Logs
+logs/
+*.log
+
+# vcpkg
+vcpkg_installed/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# Clang
+compile_commands.json
+.clangd/
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# OS specific
+Thumbs.db
+.DS_Store
+*.swp
+*.swo
+
+# IDE specific
+*.cbp
+*.depend
+*.layout
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.ipdb
+
+# Profiling
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# External dependencies (user should copy these)
+external/imgui/*
+!external/imgui/.gitkeep
+
+# Package managers
+conan.lock
+conanbuildinfo.cmake
+conaninfo.txt
