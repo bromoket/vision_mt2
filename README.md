@@ -16,8 +16,8 @@ A modern C++ game enhancement framework with static linking, clean architecture,
 
 ```powershell
 # Clone and setup
-git clone https://github.com/bromoket/visual_mt2.git
-cd visual_mt2
+git clone https://github.com/bromoket/vision_mt2.git
+cd vision_mt2
 
 # Developer build (optimized + debug info) - Default
 .\build.ps1
@@ -40,18 +40,26 @@ cd visual_mt2
 
 ### Project Structure
 ```
-visual_mt2/
+vision_mt2/
 ├── vision_external/     # Main executable source
-│   ├── src/core/        # Core functionality
-│   ├── src/injection/   # DLL injection system
+│   ├── src/core/        # Core functionality (empty)
+│   ├── src/injection/   # DLL injection system (empty)
 │   ├── src/memory/      # Memory management
-│   └── src/ui/          # ImGui interface
+│   ├── src/ui/          # ImGui interface
+│   └── src/main.cpp     # Application entry point
 ├── vision_internal/     # Hook DLL source
 │   ├── src/hooks/       # API hooks (game, network, WinAPI)
-│   ├── src/features/    # Game enhancement features
-│   └── src/core/        # DLL core functionality
+│   ├── src/features/    # Game enhancement features (empty)
+│   ├── src/core/        # DLL core functionality (empty)
+│   ├── src/utils/       # Utility functions (empty)
+│   └── src/dllmain.cpp  # DLL entry point
 ├── external/            # Third-party dependencies
+│   ├── imgui/           # ImGui library
+│   ├── d3d8/            # DirectX 8 SDK
+│   └── Python-2.7/     # Python 2.7 runtime
 ├── include/             # Shared headers
+│   └── vision/          # Vision-specific headers
+├── vcpkg_installed/     # vcpkg package cache
 └── build/               # Build output (gitignored)
 ```
 
@@ -71,9 +79,9 @@ visual_mt2/
 - **zydis** - x86/x64 disassembler library
 
 ### External Dependencies
-- **ImGui** - Immediate mode GUI framework
-- **DirectX 8/9** - Graphics rendering
-- **Python 2.7** - Scripting integration
+- **ImGui** - Immediate mode GUI framework (included in external/)
+- **DirectX 8** - Graphics rendering (SDK included in external/d3d8/)
+- **Python 2.7** - Scripting integration (runtime included in external/Python-2.7/)
 
 ### Architecture Details
 - **32-bit (x86)** builds only
@@ -111,10 +119,12 @@ start build/vision.sln         # Open in Visual Studio
 ## 📊 Build Output
 
 ```
-build/bin/[Configuration]/
+build/bin/
 ├── vision_external.exe    # Main application
 └── vision_internal.dll    # Hook DLL
 ```
+
+**Note**: Binaries are output directly to `build/bin/` directory for all configurations.
 
 ## 🔧 Advanced Configuration
 
