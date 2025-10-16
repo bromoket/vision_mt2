@@ -1,0 +1,89 @@
+# Build directories
+build/
+bin/
+lib/
+obj/
+
+# Visual Studio files
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.suo
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.unsuccessfulbuild
+ipch/
+*.idb
+*.embed.manifest
+*.embed.manifest.res
+*.intermediate.manifest
+*.tlog/
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# vcpkg installed packages
+vcpkg_installed/
+.vcpkg-root
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Debug files
+*.pdb
+*.idb
+*.exe
+*.dll
+*.exp
+
+# Logs
+*.log
+
+# ImGui config (user-specific)
+imgui.ini
+
+# Keep PowerShell build scripts
+!*.ps1
+
+# Keep important config files
+!vcpkg.json
+!.gitignore
+!CMakeLists.txt

@@ -1,0 +1,12 @@
+{
+  "name": "vision",
+  "version": "1.0.0",
+  "description": "Vision - Modern Metin2 Enhancement Tool",
+  "dependencies": [
+    "fmt",
+    "nlohmann-json",
+    "minhook",
+    "zydis"
+  ],
+  "builtin-baseline": "a67ae9b9f7afc153767a5c33607266252ff9d088"
+}
