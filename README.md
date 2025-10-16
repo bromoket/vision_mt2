@@ -16,8 +16,8 @@ A modern C++ game enhancement framework with static linking, clean architecture,
 
 ```powershell
 # Clone and setup
-git clone https://github.com/bromoket/vision_mt2.git
-cd vision_mt2
+git clone https://github.com/bromoket/visual_mt2.git
+cd visual_mt2
 
 # Developer build (optimized + debug info) - Default
 .\build.ps1
@@ -40,7 +40,7 @@ cd vision_mt2
 
 ### Project Structure
 ```
-vision_mt2/
+visual_mt2/
 ├── vision_external/     # Main executable source
 │   ├── src/core/        # Core functionality
 │   ├── src/injection/   # DLL injection system
